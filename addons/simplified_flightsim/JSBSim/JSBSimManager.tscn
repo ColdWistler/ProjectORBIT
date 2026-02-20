@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jsbsim_manager"]
+
+[ext_resource type="Script" path="res://addons/simplified_flightsim/JSBSim/JSBSimManager.gd" id="1"]
+
+[node name="JSBSimManager" type="Node"]
+script = ExtResource("1")

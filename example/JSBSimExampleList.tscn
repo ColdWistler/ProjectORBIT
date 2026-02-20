@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://gfe1oryrp3eq"]
+
+[sub_resource type="GDScript" id="1"]
+script/source = "extends Control
+
+
+
+func _on_BtnExample1_pressed():
+	get_tree().change_scene_to_file(\"res://example/Example1_Simple_JSBSim.tscn\")
+
+
+func _on_BtnExample2_pressed():
+	get_tree().change_scene_to_file(\"res://example/Example2_Complex_JSBSim.tscn\")
+
+
+func _on_BtnBack_pressed():
+	get_tree().change_scene_to_file(\"res://example/ExampleList.tscn\")
+
+
+func _on_BtnStartBridge_pressed():
+	OS.create_process(\"python\", [\"addons/simplified_flightsim/JSBSim/jsbsim_bridge.py\"])
+"
+
+[node name="JSBSimExampleList" type="Control" unique_id=23533380]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("1")
+
+[node name="Title" type="Label" parent="." unique_id=83751793]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 19.0
+offset_right = 400.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 24
+text = "JSBSim Examples"
+
+[node name="Subtitle" type="Label" parent="." unique_id=356369557]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 55.0
+offset_right = 600.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 14
+text = "These examples use JSBSim for flight physics instead of built-in physics"
+
+[node name="BtnStartBridge" type="Button" parent="." unique_id=975137138]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 95.0
+offset_right = 293.0
+offset_bottom = 130.0
+text = "Start JSBSim Bridge"
+
+[node name="BtnExample1" type="Button" parent="." unique_id=334500208]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 150.0
+offset_right = 293.0
+offset_bottom = 225.0
+text = "Example 1 - Simple (JSBSim)"
+
+[node name="LabelExample1" type="Label" parent="BtnExample1" unique_id=2124220720]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -6.0
+offset_right = 752.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 12
+text = "Single Engine
+Uses JSBSim flight dynamics
+Steering, Flaps, landing gear"
+
+[node name="BtnExample2" type="Button" parent="." unique_id=2079156560]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 310.0
+offset_right = 293.0
+offset_bottom = 385.0
+text = "Example 2 - Complex (JSBSim)"
+
+[node name="LabelExample2" type="Label" parent="BtnExample2" unique_id=1214085340]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -27.0
+offset_right = 752.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 12
+text = "Four Independent Engines
+Three fuel tanks with independent connection/disconnection
+Electrically powered steering
+Fuselage heating"
+
+[node name="BtnBack" type="Button" parent="." unique_id=1420629431]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 163.0
+offset_bottom = 24.0
+focus_mode = 0
+text = "<- Back to example list"
+
+[node name="Note" type="Label" parent="." unique_id=782207458]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 450.0
+offset_right = 600.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 12
+text = "NOTE: You must run the JSBSim bridge before starting the simulation.
+The bridge will start in mock mode if JSBSim is not installed.
+Install JSBSim: pip install jsbsim"
+
+[connection signal="pressed" from="BtnStartBridge" to="." method="_on_BtnStartBridge_pressed"]
+[connection signal="pressed" from="BtnExample1" to="." method="_on_BtnExample1_pressed"]
+[connection signal="pressed" from="BtnExample2" to="." method="_on_BtnExample2_pressed"]
+[connection signal="pressed" from="BtnBack" to="." method="_on_BtnBack_pressed"]
